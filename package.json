@@ -1,0 +1,28 @@
+{
+  "name": "csc-3100-webdev",
+  "version": "1.0.0",
+  "description": "class stuff",
+  "keywords": [
+    "school",
+    "homework",
+    "CSC3100"
+  ],
+  "homepage": "https://github.com/LaunchSpark/CSC-3100-webDev#readme",
+  "bugs": {
+    "url": "https://github.com/LaunchSpark/CSC-3100-webDev/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaunchSpark/CSC-3100-webDev.git"
+  },
+  "license": "ISC",
+  "author": "Lucas Starkey",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}
