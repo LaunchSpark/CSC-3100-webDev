@@ -1,10 +1,9 @@
-// Assignment 1 - Registration form interactions
-// All variables use naming prefixes from class (btn, txt, div, sel, arr, str, bln).
 
-// Helper function to show or hide the SPA sections
-const toggleView = (blnShowRegister) => {
-    const divLogin = document.querySelector('#divLogin');
-    const divRegister = document.querySelector('#divRegister');
+
+// Helper function to toggle between login and registration views
+function toggleView(blnShowRegister) {
+    var divLogin = document.querySelector('#divLogin');
+    var divRegister = document.querySelector('#divRegister');
 
     if (blnShowRegister) {
         divLogin.style.display = 'none';
@@ -13,12 +12,12 @@ const toggleView = (blnShowRegister) => {
         divRegister.style.display = 'none';
         divLogin.style.display = 'block';
     }
-};
+}
 
 // Login click handler (placeholder interaction)
 document.querySelector('#btnLogin').addEventListener('click', () => {
-    const strEmail = document.querySelector('#txtEmail').value.trim();
-    const strPassword = document.querySelector('#txtPassword').value.trim();
+    strEmail = document.querySelector('#txtEmail').value.trim();
+    strPassword = document.querySelector('#txtPassword').value.trim();
 
     // Provide simple feedback so users know the button is active
     Swal.fire({
@@ -33,13 +32,13 @@ document.querySelector('#btnLogin').addEventListener('click', () => {
 });
 
 // Switch to registration view
-const btnRegister = document.querySelector('#btnRegister');
+btnRegister = document.querySelector('#btnRegister');
 btnRegister.addEventListener('click', () => {
     toggleView(true);
 });
 
 // Cancel registration and return to login
-const btnCancel = document.querySelector('#btnCancel');
+btnCancel = document.querySelector('#btnCancel');
 btnCancel.addEventListener('click', () => {
     toggleView(false);
 });
@@ -48,17 +47,16 @@ btnCancel.addEventListener('click', () => {
 const btnCreateAccount = document.querySelector('#btnCreateAccount');
 btnCreateAccount.addEventListener('click', () => {
     // Gather all required fields except Street 2
-    const strFirstName = document.querySelector('#txtFirstName').value.trim();
-    const strLastName = document.querySelector('#txtLastName').value.trim();
-    const strStreet1 = document.querySelector('#txtStreet1').value.trim();
-    const strCity = document.querySelector('#txtCity').value.trim();
-    const strState = document.querySelector('#selState').value.trim();
-    const strZip = document.querySelector('#txtZip').value.trim();
-    const strPhone = document.querySelector('#txtPhone').value.trim();
-    const strEmail = document.querySelector('#txtRegisterEmail').value.trim();
-    const strPassword = document.querySelector('#txtRegisterPassword').value.trim();
-
-    const arrErrors = [];
+    strFirstName = document.querySelector('#txtFirstName').value.trim();
+    strLastName = document.querySelector('#txtLastName').value.trim();
+    strStreet1 = document.querySelector('#txtStreet1').value.trim();
+    strCity = document.querySelector('#txtCity').value.trim();
+    strState = document.querySelector('#selState').value.trim();
+    strZip = document.querySelector('#txtZip').value.trim();
+    strPhone = document.querySelector('#txtPhone').value.trim();
+    strEmail = document.querySelector('#txtRegisterEmail').value.trim();
+    strPassword = document.querySelector('#txtRegisterPassword').value.trim();
+    arrErrors = [];
 
     // Validate required fields and build a friendly error list
     if (!strFirstName) arrErrors.push('First Name is required.');
