@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwollenHippo Detailing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.8/dist/pulse/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+    <main class="d-flex justify-content-center align-items-center min-vh-100 py-4">
+            <section class="card col-sm-12 col-md-6 col-lg-3" id="divRegister" style="font-size: x-large;">
+            <div class="card-body">
+                <h1 class="text-center mb-4">SwollenHippo Detailing</h1>
+                <p class="text-center" style= "font-size: x-medium;">Please provide the information below and a customer service representative will call you to setup an appointment.</p>
+                <!-- Semantic form for registration inputs -->
+                <form aria-label="Registration form">
+                    <div class="row g-3">
+                        <!-- Name fields -->
+                        <div class="col-12">
+                            <label class="form-label" for="strFullName">Full Name</label>
+                            <input class="form-control" id="strFullName" type="text" aria-required="true">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="strRegisterEmail">Email</label>
+                            <input class="form-control" id="strRegisterEmail" type="email" autocomplete="email" aria-required="true">
+                        <div class="col-12">
+                            <label class="form-label" for="strPhone">Phone</label>
+                            <input class="form-control" id="strPhone" type="tel" autocomplete="tel" aria-required="true">
+                        </div>       
+                        <div class="col-12">
+                            <label class="form-label" for="selServices">Services</label>
+                            <select class="form-select" id="selServices" aria-required="true">
+                                <option value=""></option>
+                                <option value="Full Detail">Full Detail</option>
+                                <option value="Interior Cleaning">Interior Cleaning</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr />
+                    <button id="btnValidate" class="btn btn-primary col-12 mt-2" type="button">Validate</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- SweetAlert2 for accessible feedback modals -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+    //validaton button   
+    document.getElementById("btnValidate").addEventListener("click", () => {
+    console.log("i was clicked");
+
+    const strFullName = document.querySelector('#strFullName').value.trim();
+    const strPhone = document.querySelector('#strPhone').value.trim();
+    const strEmail = document.querySelector('#strRegisterEmail').value.trim();
+    const selServices = document.getElementById("selServices");
+
+    const arrErrors = [];
+
+    // Required field checks (trim already prevents blank spaces)
+    if (!strFullName) arrErrors.push('Full Name is required.');
+    if (!strPhone) arrErrors.push('Phone is required.');
+    if (!strEmail) arrErrors.push('Email is required.');
+    if (selServices.value === "") arrErrors.push('Please select a service.');
+
+    // Email regex (simple, practical, not insane RFC-level)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (strEmail && !emailRegex.test(strEmail)) {
+        arrErrors.push('Please enter a valid email address.');
+    }
+
+    if (arrErrors.length > 0) {
+        Swal.fire({
+            title: 'Please fix the following',
+            html: `<ul class="text-start">
+                     ${arrErrors.map(err => `<li>${err}</li>`).join('')}
+                   </ul>`,
+            icon: 'error'
+        });
+        return;
+    }
+
+    // If you reach here → validation passed
+    Swal.fire({
+        title: 'Success!',
+        text: 'Form looks good.',
+        icon: 'success'
+    });
+});
+</script>
+</body>
+</html>

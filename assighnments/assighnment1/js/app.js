@@ -46,6 +46,7 @@ btnCancel.addEventListener('click', () => {
 // Registration validation and submission
 const btnCreateAccount = document.querySelector('#btnCreateAccount');
 btnCreateAccount.addEventListener('click', () => {
+    
     // Gather all required fields except Street 2
     strFirstName = document.querySelector('#txtFirstName').value.trim();
     strLastName = document.querySelector('#txtLastName').value.trim();
